@@ -17,7 +17,6 @@ public class Population {
 			chromosome.setPhenotype(random.nextInt(MAX_CHROMOSOME_VALUE));
 			chromosome.setGenotype(conv.decimalToBinary(chromosome.getPhenotype()));
 			chromosomeList.add(chromosome);
-			chromosomeList.get(i).setAdaptation(12);
 
 		}
 	}
