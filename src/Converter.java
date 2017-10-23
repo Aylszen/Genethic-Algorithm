@@ -13,10 +13,10 @@ public class Converter {
 		}
 		for (int i = ARRAY_SIZE - 1; i >= 0; i--) {
 			binary[j] = temp[i];
-			System.out.print(binary[j]);
+			//System.out.print(binary[j]);
 			j++;
 		}
-		System.out.print("\n");
+		//System.out.print("\n");
 		return binary;
 	}
 }
