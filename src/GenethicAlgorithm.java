@@ -5,9 +5,8 @@ public class GenethicAlgorithm {
 
 		final byte POPULATION_SIZE = 10;
 
-		Population firstPopulation = new Population(POPULATION_SIZE);
-		firstPopulation.drawChromosomes();
-
+		Population firstPopulation = new Population();
+		firstPopulation.chooseFirstPopulation(POPULATION_SIZE);
 	}
 
 }

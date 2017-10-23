@@ -1,8 +1,8 @@
 
 public class Chromosome {
-	private int maxSize = 127;
-	Integer value = 0;
-	int[] binaryValue;
+	private int maxSize = 0;
+	Integer phenotype = 0;
+	int[] genotype;
 
 	public Chromosome() {
 		this.maxSize = 127;
