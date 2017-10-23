@@ -7,6 +7,7 @@ public class Population {
 	int populationSize = 0;
 	final byte MAX_CHROMOSOME_VALUE = 127;
 	Converter conv = new Converter();
+
 	public Population(int populationSize) {
 		this.populationSize = populationSize;
 	}
@@ -21,6 +22,5 @@ public class Population {
 			chromosomeArray.add(chromosome);
 		}
 	}
-
 
 }

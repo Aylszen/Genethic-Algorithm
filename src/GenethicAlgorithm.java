@@ -7,7 +7,7 @@ public class GenethicAlgorithm {
 
 		Population firstPopulation = new Population(POPULATION_SIZE);
 		firstPopulation.drawChromosomes();
-		
+
 	}
 
 }
