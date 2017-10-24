@@ -4,11 +4,13 @@ public class Chromosome {
 	private Integer phenotype;
 	private int[] genotype;
 	private int adaptation;
+	private float probabilityOfSelection;
 
 	public Chromosome() {
 		this.maxSize = 127;
 		this.phenotype = 0;
 		this.adaptation = 0;
+		this.probabilityOfSelection = 0;
 	}
 
 	public Chromosome(int maxSize) {
@@ -45,5 +47,13 @@ public class Chromosome {
 
 	public void setAdaptation(int adaptation) {
 		this.adaptation = adaptation;
+	}
+
+	public float getProbabilityOfSelection() {
+		return probabilityOfSelection;
+	}
+
+	public void setProbabilityOfSelection(float probabilityOfSelection) {
+		this.probabilityOfSelection = probabilityOfSelection;
 	}
 }
