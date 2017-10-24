@@ -6,7 +6,7 @@ public class GenethicAlgorithm {
 		Population firstPopulation = new Population();
 		firstPopulation.chooseFirstPopulation();
 		firstPopulation.assessmentOfAdaptation();
-		firstPopulation.setChromosomesProbability();
+		firstPopulation.setProbabilityOfSelectionForEachChromosome();
 
 		for (int i = 0; i < 10; i++) {
 			System.out.print(firstPopulation.chromosomeList.get(i).getPhenotype() + "\n");

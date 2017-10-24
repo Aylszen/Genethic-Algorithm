@@ -26,18 +26,18 @@ public class Population {
 		}
 	}
 
-	public void setChromosomesProbability() {
-		int tempValue = 0;
+	public void setProbabilityOfSelectionForEachChromosome() {
+		int sumOfAdaptationValues = 0;
 		for (int i = 0; i < POPULATION_SIZE; i++) {
-			tempValue += chromosomeList.get(i).getAdaptation();
+			sumOfAdaptationValues += chromosomeList.get(i).getAdaptation();
 		}
 
 		for (int i = 0; i < POPULATION_SIZE; i++) {
 			chromosomeList.get(i).setProbabilityOfSelection(
-					((float) chromosomeList.get(i).getAdaptation() / (float) tempValue) * 100);
-			// System.out.print(chromosomeList.get(i).getProbabilityOfSelection()
-			// + "\n");
+					((float) chromosomeList.get(i).getAdaptation() / (float) sumOfAdaptationValues) * 100);
 		}
 	}
+	
+	
 
 }
