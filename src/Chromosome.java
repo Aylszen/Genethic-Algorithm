@@ -3,13 +3,14 @@ public class Chromosome {
 	private int maxSize;
 	private Integer phenotype;
 	private int[] genotype;
-	private int adaptation;
+	private int adaptationLevel;
+	private int adaptationLevelSum;
 	private float probabilityOfSelection;
 
 	public Chromosome() {
 		this.maxSize = 127;
 		this.phenotype = 0;
-		this.adaptation = 0;
+		this.adaptationLevel = 0;
 		this.probabilityOfSelection = 0;
 	}
 
@@ -41,12 +42,12 @@ public class Chromosome {
 		this.genotype = genotype;
 	}
 
-	public int getAdaptation() {
-		return adaptation;
+	public int getAdaptationLevel() {
+		return adaptationLevel;
 	}
 
-	public void setAdaptation(int adaptation) {
-		this.adaptation = adaptation;
+	public void setAdaptationLevel(int adaptation) {
+		this.adaptationLevel = adaptation;
 	}
 
 	public float getProbabilityOfSelection() {
@@ -55,5 +56,13 @@ public class Chromosome {
 
 	public void setProbabilityOfSelection(float probabilityOfSelection) {
 		this.probabilityOfSelection = probabilityOfSelection;
+	}
+
+	public int getAdaptationLevelSum() {
+		return adaptationLevelSum;
+	}
+
+	public void setAdaptationLevelSum(int adaptationLevelSum) {
+		this.adaptationLevelSum = adaptationLevelSum;
 	}
 }
