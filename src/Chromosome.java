@@ -4,7 +4,6 @@ public class Chromosome {
 	private Integer phenotype;
 	private int[] genotype;
 	private int adaptationLevel;
-	private int adaptationLevelSum;
 	private float probabilityOfSelection;
 
 	public Chromosome() {
@@ -56,13 +55,5 @@ public class Chromosome {
 
 	public void setProbabilityOfSelection(float probabilityOfSelection) {
 		this.probabilityOfSelection = probabilityOfSelection;
-	}
-
-	public int getAdaptationLevelSum() {
-		return adaptationLevelSum;
-	}
-
-	public void setAdaptationLevelSum(int adaptationLevelSum) {
-		this.adaptationLevelSum = adaptationLevelSum;
 	}
 }

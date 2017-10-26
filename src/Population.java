@@ -25,11 +25,11 @@ public class Population {
 		}
 	}
 
-	public void setProbabilityOfSelectionForEachChromosome(final byte POPULATION_SIZE,List<Chromosome> chromosomeList) {
+	public void setProbabilityOfSelectionForEachChromosome(final byte POPULATION_SIZE,
+			List<Chromosome> chromosomeList) {
 		int sumOfAdaptationValues = 0;
 		for (int i = 0; i < POPULATION_SIZE; i++) {
 			sumOfAdaptationValues += chromosomeList.get(i).getAdaptationLevel();
-			chromosomeList.get(i).setAdaptationLevelSum(sumOfAdaptationValues);
 		}
 
 		for (int i = 0; i < POPULATION_SIZE; i++) {
@@ -38,19 +38,20 @@ public class Population {
 		}
 	}
 
-	public List<Chromosome> selectNextGeneration(final byte POPULATION_SIZE,List<Chromosome> chromosomeList) {
+	public List<Chromosome> selectNextGeneration(final byte POPULATION_SIZE, List<Chromosome> chromosomeList) {
 		Random random = new Random();
 		float randomProbability = 0;
 		List<Chromosome> nextGenChromosomeList = new ArrayList<Chromosome>();
 		for (int i = 0; i < POPULATION_SIZE; i++) {
 			randomProbability = (random.nextFloat() * 100);
-			selectNewChromosome(POPULATION_SIZE,chromosomeList,nextGenChromosomeList, randomProbability);
+			selectNewChromosomes(POPULATION_SIZE, chromosomeList, nextGenChromosomeList, randomProbability);
 		}
 		return nextGenChromosomeList;
 
 	}
 
-	public void selectNewChromosome(final byte POPULATION_SIZE,List<Chromosome> chromosomeList,List<Chromosome> nextGenChromosomeList, float randomProbability) {
+	public void selectNewChromosomes(final byte POPULATION_SIZE, List<Chromosome> chromosomeList,
+			List<Chromosome> nextGenChromosomeList, float randomProbability) {
 		float probabilityOfSelectionSum = 0;
 		for (int j = 0; j < POPULATION_SIZE; j++) {
 			probabilityOfSelectionSum += chromosomeList.get(j).getProbabilityOfSelection();
@@ -60,6 +61,20 @@ public class Population {
 				probabilityOfSelectionSum = 0;
 				return;
 			}
+		}
+	}
+
+	public void crossChromosomes(final byte POPULATION_SIZE, List<Chromosome> chromosomeList) {
+		Random random = new Random();
+		final byte LOCUS_SIZE = 7;
+		int locus, ch1_locus, ch2_locus, ch1_at, ch2_at = 0;
+		random.nextInt(POPULATION_SIZE);
+		for (int i = 0; i < (POPULATION_SIZE / 2); i++) {
+			locus = random.nextInt(LOCUS_SIZE);
+			ch1_locus = chromosomeList.get(ch1_at = random.nextInt(POPULATION_SIZE)).getGenotype()[locus];
+			ch2_locus = chromosomeList.get(ch2_at = random.nextInt(POPULATION_SIZE)).getGenotype()[locus];
+			chromosomeList.get(ch1_at).getGenotype()[locus] = ch2_locus;
+			chromosomeList.get(ch2_at).getGenotype()[locus] = ch1_locus;
 		}
 	}
 
