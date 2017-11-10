@@ -1,8 +1,9 @@
 
 public class Converter {
 
+	final byte ARRAY_SIZE = 7;
+
 	public int[] decimalToBinary(int decimalValue) {
-		final byte ARRAY_SIZE = 7;
 		int temp[] = new int[ARRAY_SIZE];
 		int binary[] = new int[ARRAY_SIZE];
 		int index = 0;
@@ -13,10 +14,19 @@ public class Converter {
 		}
 		for (int i = ARRAY_SIZE - 1; i >= 0; i--) {
 			binary[j] = temp[i];
-			//System.out.print(binary[j]);
 			j++;
 		}
-		//System.out.print("\n");
 		return binary;
+	}
+
+	public int binaryToDecimal(int[] binaryArray) {
+		int decimalValue = 0;
+		int power = 0;
+		for (int i = ARRAY_SIZE - 1; i >= 0; i--) {
+			if (binaryArray[i] == 1)
+				decimalValue += (int) Math.pow(2, power);
+			power++;
+		}
+		return decimalValue;
 	}
 }

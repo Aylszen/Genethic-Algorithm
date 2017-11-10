@@ -2,7 +2,8 @@
 public class Chromosome {
 	private int maxSize;
 	private Integer phenotype;
-	private int[] genotype;
+	private int[] genotype = new int[7];
+
 	private int adaptationLevel;
 	private float probabilityOfSelection;
 
@@ -33,12 +34,12 @@ public class Chromosome {
 		this.phenotype = phenotype;
 	}
 
-	public int[] getGenotype() {
-		return genotype;
+	public void setGene(int value, byte locus) {
+		this.genotype[locus] = value;
 	}
 
-	public void setGenotype(int[] genotype) {
-		this.genotype = genotype;
+	public int getGene(int locus) {
+		return this.genotype[locus];
 	}
 
 	public int getAdaptationLevel() {
@@ -55,5 +56,13 @@ public class Chromosome {
 
 	public void setProbabilityOfSelection(float probabilityOfSelection) {
 		this.probabilityOfSelection = probabilityOfSelection;
+	}
+
+	public int[] getGenotype() {
+		return genotype;
+	}
+
+	public void setGenotype(int[] genotype) {
+		this.genotype = genotype;
 	}
 }
