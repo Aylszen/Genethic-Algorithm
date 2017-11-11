@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Population {
 
+	private int sumOfAdaptationValues = 0;
 	Converter conv = new Converter();
 
 	public List<Chromosome> chooseFirstPopulation(final byte POPULATION_SIZE, final byte MAX_CHROMOSOME_VALUE) {
@@ -28,7 +29,7 @@ public class Population {
 
 	public void setProbabilityOfSelectionForEachChromosome(final byte POPULATION_SIZE,
 			List<Chromosome> chromosomeList) {
-		int sumOfAdaptationValues = 0;
+		sumOfAdaptationValues = 0;
 		for (int i = 0; i < POPULATION_SIZE; i++) {
 			sumOfAdaptationValues += chromosomeList.get(i).getAdaptationLevel();
 		}
@@ -39,14 +40,20 @@ public class Population {
 		}
 	}
 
+	public void checkAdapatationLevelOfWholePopulation(int i, final int ALL_CHROMOSOMES_WITH_MAX_VALUE) {
+		System.out.println("Adaptation level(" + i + "): " + sumOfAdaptationValues);
+		if (sumOfAdaptationValues == ALL_CHROMOSOMES_WITH_MAX_VALUE) {
+			System.exit(1);
+		}
+	}
+
 	public List<Chromosome> selectNextGeneration(final byte POPULATION_SIZE, List<Chromosome> chromosomeList) {
 		Random random = new Random();
 		float randomProbability = 0;
 		List<Chromosome> nextGenChromosomeList = new ArrayList<Chromosome>();
 		for (int i = 0; i < POPULATION_SIZE; i++) {
 			randomProbability = (random.nextFloat() * 100);
-			nextGenChromosomeList.add(
-					selectNewChromosomes(POPULATION_SIZE, chromosomeList, randomProbability));
+			nextGenChromosomeList.add(selectNewChromosomes(POPULATION_SIZE, chromosomeList, randomProbability));
 		}
 		return nextGenChromosomeList;
 	}
@@ -95,7 +102,6 @@ public class Population {
 		for (int i = 0; i < 1; i++) {
 			if (random.nextInt(101) <= PROBABILITY_OF_MUTATION) {
 				locus = random.nextInt(LOCUS_SIZE);
-				System.out.print("Uda³o siê\n");
 				if (chromosomeList.get(i).getGene(locus) == 0)
 					chromosomeList.get(i).setGene(1, locus);
 				else
