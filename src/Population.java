@@ -11,7 +11,7 @@ public class Population {
 		Random random = new Random();
 		List<Chromosome> chromosomeList = new ArrayList<Chromosome>();
 		for (int i = 0; i < POPULATION_SIZE; i++) {
-			Chromosome chromosome = new Chromosome(MAX_CHROMOSOME_VALUE);
+			Chromosome chromosome = new Chromosome();
 			chromosome.setPhenotype(random.nextInt(MAX_CHROMOSOME_VALUE));
 			chromosome.setGenotype(conv.decimalToBinary(chromosome.getPhenotype()));
 			chromosomeList.add(chromosome);
@@ -39,23 +39,22 @@ public class Population {
 		}
 	}
 
-	public List<Chromosome> selectNextGeneration(final byte POPULATION_SIZE, List<Chromosome> chromosomeList,
-			final byte MAX_CHROMOSOME_VALUE) {
+	public List<Chromosome> selectNextGeneration(final byte POPULATION_SIZE, List<Chromosome> chromosomeList) {
 		Random random = new Random();
 		float randomProbability = 0;
 		List<Chromosome> nextGenChromosomeList = new ArrayList<Chromosome>();
 		for (int i = 0; i < POPULATION_SIZE; i++) {
 			randomProbability = (random.nextFloat() * 100);
 			nextGenChromosomeList.add(
-					selectNewChromosomes(POPULATION_SIZE, chromosomeList, randomProbability, MAX_CHROMOSOME_VALUE));
+					selectNewChromosomes(POPULATION_SIZE, chromosomeList, randomProbability));
 		}
 		return nextGenChromosomeList;
 	}
 
 	public Chromosome selectNewChromosomes(final byte POPULATION_SIZE, List<Chromosome> chromosomeList,
-			float randomProbability, final byte MAX_CHROMOSOME_VALUE) {
+			float randomProbability) {
 		float probabilityOfSelectionSum = 0;
-		Chromosome newChromosome = new Chromosome(MAX_CHROMOSOME_VALUE);
+		Chromosome newChromosome = new Chromosome();
 		for (int j = 0; j < POPULATION_SIZE; j++) {
 			probabilityOfSelectionSum += chromosomeList.get(j).getProbabilityOfSelection();
 			if (randomProbability < probabilityOfSelectionSum) {
@@ -73,11 +72,11 @@ public class Population {
 
 		final byte LOCUS_SIZE = 7;
 		int ch1_at = 0, ch2_at = 0;
-		byte locus = 0;
+		int locus = 0;
 		int temp = 0;
 		for (int i = 0; i < (POPULATION_SIZE / 2); i++) {
-			if (random.nextInt(101) < PROBABILITY_OF_CROSSING) {
-				locus = (byte) random.nextInt(LOCUS_SIZE);
+			if (random.nextInt(101) <= PROBABILITY_OF_CROSSING) {
+				locus = random.nextInt(LOCUS_SIZE);
 				ch1_at = random.nextInt(POPULATION_SIZE);
 				ch2_at = random.nextInt(POPULATION_SIZE);
 				temp = chromosomeList.get(ch1_at).getGene(locus);
@@ -92,16 +91,15 @@ public class Population {
 			List<Chromosome> chromosomeList) {
 		Random random = new Random();
 		final byte LOCUS_SIZE = 7;
-		byte locus = 0;
-		for (int i = 0; i < POPULATION_SIZE; i++) {
-			if (random.nextInt(101) < PROBABILITY_OF_MUTATION) {
-				locus = (byte) random.nextInt(LOCUS_SIZE);
-				System.out.print("Uda³o siê");
-				if (chromosomeList.get(i).getGene(locus) == 0) {
+		int locus = 0;
+		for (int i = 0; i < 1; i++) {
+			if (random.nextInt(101) <= PROBABILITY_OF_MUTATION) {
+				locus = random.nextInt(LOCUS_SIZE);
+				System.out.print("Uda³o siê\n");
+				if (chromosomeList.get(i).getGene(locus) == 0)
 					chromosomeList.get(i).setGene(1, locus);
-				} else {
+				else
 					chromosomeList.get(i).setGene(0, locus);
-				}
 			}
 		}
 	}
