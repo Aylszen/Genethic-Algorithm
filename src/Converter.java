@@ -6,7 +6,7 @@ public class Converter {
 	public int[] decimalToBinary(int decimalValue) {
 		int tempArray[] = new int[ARRAY_SIZE];
 		int binaryArray[] = new int[ARRAY_SIZE];
-		int index = 0,j = 0;
+		int index = 0, j = 0;
 		while (decimalValue > 0) {
 			tempArray[index++] = decimalValue % 2;
 			decimalValue = decimalValue / 2;

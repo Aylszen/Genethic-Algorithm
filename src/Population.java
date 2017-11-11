@@ -89,6 +89,8 @@ public class Population {
 				temp = chromosomeList.get(ch1_at).getGene(locus);
 				chromosomeList.get(ch1_at).setGene(chromosomeList.get(ch2_at).getGene(locus), locus);
 				chromosomeList.get(ch2_at).setGene(temp, locus);
+				chromosomeList.get(ch1_at).setPhenotype(conv.binaryToDecimal(chromosomeList.get(ch1_at).getGenotype()));
+				chromosomeList.get(ch2_at).setPhenotype(conv.binaryToDecimal(chromosomeList.get(ch2_at).getGenotype()));
 			}
 		}
 
@@ -102,11 +104,15 @@ public class Population {
 		for (int i = 0; i < 1; i++) {
 			if (random.nextInt(101) <= PROBABILITY_OF_MUTATION) {
 				locus = random.nextInt(LOCUS_SIZE);
-				if (chromosomeList.get(i).getGene(locus) == 0)
+				if (chromosomeList.get(i).getGene(locus) == 0) {
 					chromosomeList.get(i).setGene(1, locus);
-				else
+					chromosomeList.get(i).setPhenotype(conv.binaryToDecimal(chromosomeList.get(i).getGenotype()));
+				} else {
 					chromosomeList.get(i).setGene(0, locus);
+					chromosomeList.get(i).setPhenotype(conv.binaryToDecimal(chromosomeList.get(i).getGenotype()));
+				}
 			}
+
 		}
 	}
 

@@ -16,11 +16,10 @@ public class GenethicAlgorithm {
 		for (int i = 0; i < 20000; i++) {
 			population.assessmentOfAdaptation(POPULATION_SIZE, chromosomeList);
 			population.setProbabilityOfSelectionForEachChromosome(POPULATION_SIZE, chromosomeList);
-			population.checkAdapatationLevelOfWholePopulation(i,ALL_CHROMOSOMES_WITH_MAX_VALUE);
+			population.checkAdapatationLevelOfWholePopulation(i, ALL_CHROMOSOMES_WITH_MAX_VALUE);
 			chromosomeList = population.selectNextGeneration(POPULATION_SIZE, chromosomeList);
 			population.crossChromosomes(POPULATION_SIZE, PROBABILITY_OF_CROSSING, chromosomeList);
 			population.mutateChromosomes(POPULATION_SIZE, PROBABILITY_OF_MUTATION, chromosomeList);
-			
 		}
 	}
 
